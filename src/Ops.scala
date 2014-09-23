@@ -1,4 +1,4 @@
-class Ops(flag: String,description: String, func: Unit ) {
+class Ops(val flag: String,val description: String, val func: Unit ) {
   
   def func_(){}
   def flag_(){}
