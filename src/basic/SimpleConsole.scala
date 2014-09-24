@@ -15,10 +15,8 @@ class SimpleConsole() {
       printError("Invalid operation")
       return
     }
-    if(args(1) == "-h" || args(1) == "--help" ){ ops("-h").func }
-    
     try{
-      var source =  Source.fromFile(args(0), "UTF-8")
+      ops(args(1)).func(args(0))
     } catch {
       case ex: IOException => {
         printError("Java IOException, please check the input file")
@@ -34,7 +32,7 @@ class SimpleConsole() {
       "-h" -> new Ops("-h","Help: see all of the options for the program",printOptions _)
       )
 
-  def printOptions(arg: String = "") {
+  def printOptions(arg: String) {
     Console.println("Usage of application is: <file> <option>")
     for(key <- ops.keys){
       Console.printf("|\t%s\t%s\n", key,ops(key).description)
@@ -42,7 +40,7 @@ class SimpleConsole() {
   }
   def printError(msg: String) {
     Console.println("An error was encountered: "+msg)
-    printOptions()
+    printOptions("")
   }
 
 }
