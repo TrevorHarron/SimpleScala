@@ -1,5 +1,7 @@
 package basic
 
+import java.io.IOException
+
 class SimpleConsole() {
 
   def run(args: Array[String]): Unit = {
@@ -14,6 +16,17 @@ class SimpleConsole() {
       return
     }
     if(args(1) == "-h" || args(1) == "--help" ){ ops("-h").func }
+    
+    try{
+      
+    } catch {
+      case ex: IOException => {
+        printError("Java IOException, please check the input file")
+      }
+      case ex: Exception =>{
+        printError("Uknown Error Occured")
+      }
+    }
 
   }
      val ops = Map(
