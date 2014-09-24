@@ -10,8 +10,6 @@ class SimpleConsole() {
     if(args.length != 2){
       printError("invalid number of arguments")
       return
-    } else {
-      Console.println("Bravo! you passed in the correct number of arguments!")
     }
     if(! (ops contains args(1))){
       printError("Invalid operation")
