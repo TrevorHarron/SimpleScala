@@ -6,11 +6,11 @@ object Application extends App {
     val console = new SimpleConsole()
     var done = false
     while(!done){
-      Console.print("console > ")
+      Console.print("+> ")
       val input = readLine().toLowerCase
       if(input == "quit" || input == "exit"){
         done = true
-      } else {
+      } else if(input != ""){
         var programArgs = input split " "
         console.run(programArgs)
       }
