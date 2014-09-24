@@ -1,5 +1,7 @@
 package basic
 
+import scala.io.Source
+
 import java.io.IOException
 
 class SimpleConsole() {
@@ -18,7 +20,7 @@ class SimpleConsole() {
     if(args(1) == "-h" || args(1) == "--help" ){ ops("-h").func }
     
     try{
-      
+      var source =  Source.fromFile(args(0), "UTF-8")
     } catch {
       case ex: IOException => {
         printError("Java IOException, please check the input file")
