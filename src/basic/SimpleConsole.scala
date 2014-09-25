@@ -47,7 +47,7 @@ class SimpleConsole() {
   def countLines(file:String){
     var source = Source.fromFile(file, "UTF-8")
     var count = source.getLines.length
-    Console.printf("There are %d lines in the file %s", count, file)
+    Console.printf("There are %d lines in the file %s\n", count, file)
   }
 
 }
