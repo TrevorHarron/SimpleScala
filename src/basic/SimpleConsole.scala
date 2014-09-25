@@ -29,8 +29,9 @@ class SimpleConsole() {
      val ops = Map(
       "--help" -> new Ops("--help","Help: see all of the options for the program",printOptions _),
       "-h" -> new Ops("-h","Help: see all of the options for the program",printOptions _),
-      "--line-count" -> new Ops("--line-count", "Line Count: count the number of lines in the file", countLines _)
-      )
+      "--line-count" -> new Ops("--line-count", "Line Count: count the number of lines in the file", countLines _),
+      "--word-count" -> new Ops("--word-count", "Word Count: count the number of words in the file", countWords _) 
+     )
 
   def printOptions(arg: String) {
     Console.println("Usage of application is: <file> <option>")
@@ -48,6 +49,16 @@ class SimpleConsole() {
     var source = Source.fromFile(file, "UTF-8")
     var count = source.getLines.length
     Console.printf("There are %d lines in the file %s\n", count, file)
+  }
+  
+  def countWords(file:String){
+    var source = Source.fromFile(file, "UTF-8")
+    var lines = source.getLines
+    var count = 0
+    for(line <- lines){
+      count += line.split(" ").length
+    }
+    Console.printf("There are %d words in the file %s\n", count, file)
   }
 
 }
