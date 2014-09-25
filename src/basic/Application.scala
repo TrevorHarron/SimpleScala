@@ -10,7 +10,9 @@ object Application extends App {
       val input = readLine().toLowerCase
       if(input == "quit" || input == "exit"){
         done = true
-      } else if(input != ""){
+      }else if(input == "help"){ 
+    	  console.printOptions(input)
+      }else if(input != ""){
         var programArgs = input split " "
         console.run(programArgs)
       }

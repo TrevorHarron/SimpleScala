@@ -1,6 +1,7 @@
 package basic
 
 import java.io.IOException
+import scala.io.Source
 
 class SimpleConsole() {
 
@@ -28,7 +29,7 @@ class SimpleConsole() {
      val ops = Map(
       "--help" -> new Ops("--help","Help: see all of the options for the program",printOptions _),
       "-h" -> new Ops("-h","Help: see all of the options for the program",printOptions _),
-      "--line-count" -> new Ops("--line-count", "Line Count: count the number of lines in the file", printOptions)
+      "--line-count" -> new Ops("--line-count", "Line Count: count the number of lines in the file", countLines _)
       )
 
   def printOptions(arg: String) {
@@ -37,9 +38,16 @@ class SimpleConsole() {
       Console.printf("|\t%s\t%s\n", key,ops(key).description)
     }
   }
+     
   def printError(msg: String) {
     Console.println("An error was encountered: "+msg)
     printOptions("")
+  }
+  
+  def countLines(file:String){
+    var source = Source.fromFile(file, "UTF-8")
+    var count = source.getLines.length
+    Console.printf("There are %d lines in the file %s", count, file)
   }
 
 }
