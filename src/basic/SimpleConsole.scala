@@ -30,7 +30,8 @@ class SimpleConsole() {
       "--help" -> new Ops("--help","Help: see all of the options for the program",printOptions _),
       "-h" -> new Ops("-h","Help: see all of the options for the program",printOptions _),
       "--line-count" -> new Ops("--line-count", "Line Count: count the number of lines in the file", countLines _),
-      "--word-count" -> new Ops("--word-count", "Word Count: count the number of words in the file", countWords _) 
+      "--word-count" -> new Ops("--word-count", "Word Count: count the number of words in the file", countWords _),
+      "--word-count" -> new Ops("--character-count", "Character Count: count the number of total characters in the file", countCharacters _)
      )
 
   def printOptions(arg: String) {
@@ -59,6 +60,17 @@ class SimpleConsole() {
       count += line.split(" ").length
     }
     Console.printf("There are %d words in the file %s\n", count, file)
+  }
+  
+    
+  def countCharacters(file:String){
+    var source = Source.fromFile(file, "UTF-8")
+    var lines = source.getLines
+    var count = 0
+    for(line <- lines){
+      count += line.split("").length
+    }
+    Console.printf("There are %d characters in the file %s\n", count, file)
   }
 
 }
