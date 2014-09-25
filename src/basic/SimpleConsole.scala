@@ -1,7 +1,5 @@
 package basic
 
-import scala.io.Source
-
 import java.io.IOException
 
 class SimpleConsole() {
@@ -29,7 +27,8 @@ class SimpleConsole() {
   }
      val ops = Map(
       "--help" -> new Ops("--help","Help: see all of the options for the program",printOptions _),
-      "-h" -> new Ops("-h","Help: see all of the options for the program",printOptions _)
+      "-h" -> new Ops("-h","Help: see all of the options for the program",printOptions _),
+      "--line-count" -> new Ops("--line-count", "Line Count: count the number of lines in the file", printOptions)
       )
 
   def printOptions(arg: String) {
