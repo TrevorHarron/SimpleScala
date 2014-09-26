@@ -31,7 +31,7 @@ class SimpleConsole() {
       "-h" -> new Ops("-h","Help: see all of the options for the program",printOptions _),
       "--line-count" -> new Ops("--line-count", "Line Count: count the number of lines in the file", countLines _),
       "--word-count" -> new Ops("--word-count", "Word Count: count the number of words in the file", countWords _),
-      "--word-count" -> new Ops("--character-count", "Character Count: count the number of total characters in the file", countCharacters _)
+      "--character-count" -> new Ops("--character-count", "Character Count: count the number of total characters in the file", countCharacters _)
      )
 
   def printOptions(arg: String) {

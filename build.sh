@@ -1,3 +1,4 @@
 #!/bin/bash
 
-scalac ./src/basic/*.scala
+cd ./src/basic
+scalac *.scala
