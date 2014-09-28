@@ -7,10 +7,11 @@ object Application extends App {
     var done = false
     while(!done){
       Console.print("+> ")
-      val input = readLine().toLowerCase
-      if(input == "quit" || input == "exit"){
+      val input = readLine()
+      var lower = input.toLowerCase
+      if(lower == "quit" || lower == "exit"){
         done = true
-      }else if(input == "help"){ 
+      }else if(lower == "help"){ 
     	  console.printOptions(input)
       }else if(input != ""){
         var programArgs = input split " "

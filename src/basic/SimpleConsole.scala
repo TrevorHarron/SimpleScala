@@ -6,7 +6,7 @@ import scala.io.Source
 class SimpleConsole() {
 
   def run(args: Array[String]): Unit = {
-    if(args.length != 2){
+    if(args.length < 2){
       printError("invalid number of arguments")
       return
     }
@@ -28,7 +28,6 @@ class SimpleConsole() {
   }
      val ops = Map(
       "--help" -> new Ops("--help","Help: see all of the options for the program",printOptions _),
-      "-h" -> new Ops("-h","Help: see all of the options for the program",printOptions _),
       "--line-count" -> new Ops("--line-count", "Line Count: count the number of lines in the file", countLines _),
       "--word-count" -> new Ops("--word-count", "Word Count: count the number of words in the file", countWords _),
       "--character-count" -> new Ops("--character-count", "Character Count: count the number of total characters in the file", countCharacters _)
