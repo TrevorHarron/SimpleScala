@@ -12,7 +12,7 @@ object Application extends App {
       if(lower == "quit" || lower == "exit"){
         done = true
       }else if(lower == "help"){ 
-    	  console.printOptions(input)
+    	  console.printOptions(new Array[String](0))
       }else if(input != ""){
         var programArgs = input split " "
         console.run(programArgs)

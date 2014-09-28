@@ -15,7 +15,12 @@ class SimpleConsole() {
       return
     }
     try{
-      ops(args(1)).func(args(0))
+      var aArgs = new Array[String](args.length)
+      aArgs + args.head
+      if(args.size > 2){
+    	  aArgs zip args.slice(2, args.length)
+      }
+      ops(args(1)).func(aArgs)
     } catch {
       case ex: IOException => {
         printError("Java IOException, please check the input file")
@@ -33,7 +38,7 @@ class SimpleConsole() {
       "--character-count" -> new Ops("--character-count", "Character Count: count the number of total characters in the file", countCharacters _)
      )
 
-  def printOptions(arg: String) {
+  def printOptions(arg: Array[String]) {
     Console.println("Usage of application is: <file> <option>")
     for(key <- ops.keys){
       Console.printf("|\t%s\t%s\n", key,ops(key).description)
@@ -42,16 +47,18 @@ class SimpleConsole() {
      
   def printError(msg: String) {
     Console.println("An error was encountered: "+msg)
-    printOptions("")
+    printOptions(new Array[String](1))
   }
   
-  def countLines(file:String){
+  def countLines(args:Array[String]){
+    val file =  args(0)
     var source = Source.fromFile(file, "UTF-8")
     var count = source.getLines.length
     Console.printf("There are %d lines in the file %s\n", count, file)
   }
   
-  def countWords(file:String){
+  def countWords(args:Array[String]){
+    val file =  args(0)
     var source = Source.fromFile(file, "UTF-8")
     var lines = source.getLines
     var count = 0
@@ -62,7 +69,8 @@ class SimpleConsole() {
   }
   
     
-  def countCharacters(file:String){
+  def countCharacters(args:Array[String]){
+    val file =  args(0)
     var source = Source.fromFile(file, "UTF-8")
     var lines = source.getLines
     var count = 0
