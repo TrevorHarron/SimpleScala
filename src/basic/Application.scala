@@ -8,10 +8,10 @@ object Application extends App {
     while(!done){
       Console.print("+> ")
       val input = readLine()
-      var lower = input.toLowerCase
-      if(lower == "quit" || lower == "exit"){
+      var lowerInput = input.toLowerCase
+      if(lowerInput == "quit" || lowerInput == "exit"){
         done = true
-      }else if(lower == "help"){ 
+      }else if(lowerInput == "help"){ 
     	  console.printOptions(new Array[String](0))
       }else if(input != ""){
         var programArgs = input split " "
