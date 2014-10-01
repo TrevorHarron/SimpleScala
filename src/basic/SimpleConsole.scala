@@ -36,7 +36,8 @@ class SimpleConsole() {
       "--line-count" -> new Ops("--line-count", "Line Count: count the number of lines in the file", countLines _),
       "--word-count" -> new Ops("--word-count", "Word Count: count the number of words in the file", countWords _),
       "--character-count" -> new Ops("--character-count", "Character Count: count the number of total characters in the file", countCharacters _),
-      "--is-empty" -> new Ops("--is-empty","Is Empty: checks to see if the file exists but is empty",isEmpty _)
+      "--is-empty" -> new Ops("--is-empty","Is Empty: checks to see if the file exists but is empty",isEmpty _),
+      "--whitespace-count"-> new Ops("--whitespace-count", "Counts the number of white space characters", _ => Console.println("Not Implemented."))
      )
 
   def printOptions(arg: Array[String]) {
