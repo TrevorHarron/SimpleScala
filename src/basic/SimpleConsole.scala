@@ -2,7 +2,7 @@ package basic
 
 import java.io.IOException
 import scala.io.Source
-
+import scala.util.{Success, Failure}
 class SimpleConsole() {
 
   def run(args: Array[String]): Unit = {
@@ -35,7 +35,8 @@ class SimpleConsole() {
       "--help" -> new Ops("--help","Help: see all of the options for the program",printOptions _),
       "--line-count" -> new Ops("--line-count", "Line Count: count the number of lines in the file", countLines _),
       "--word-count" -> new Ops("--word-count", "Word Count: count the number of words in the file", countWords _),
-      "--character-count" -> new Ops("--character-count", "Character Count: count the number of total characters in the file", countCharacters _)
+      "--character-count" -> new Ops("--character-count", "Character Count: count the number of total characters in the file", countCharacters _),
+      "--is-empty" -> new Ops("--is-empty","Is Empty: checks to see if the file exists but is empty",isEmpty _)
      )
 
   def printOptions(arg: Array[String]) {
@@ -78,6 +79,16 @@ class SimpleConsole() {
       count += line.split("").length
     }
     Console.printf("There are %d characters in the file %s\n", count, file)
+  }
+  
+  def isEmpty(args:Array[String]){
+    val file = args(0)
+    var source = Source.fromFile(file, "UTF-8")
+    var lines = source.getLines
+    if(lines.isEmpty)
+      Console.println("This is an empty file.")
+    else
+      Console.println("The file is not empty.")
   }
 
 }
